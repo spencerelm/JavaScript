@@ -11,34 +11,23 @@ submit.on("click", function() {
     // Prevent the page from refreshing
     d3.event.preventDefault();
 
-    // Level 1 attempt commented below
-    // Select the input element and get the raw HTML code
-    // var inputElement = d3.select("#datetime");
-
-    // Get the value property of the input element
-    // var inputValue = inputElement.property("value");
-
-    // console.log(inputValue);
-
-    // Updated level 2 below
-    // Create dictionary to hold multiple search criteria inputs
     var inputDict = {}
 
     // Put criteria into dictionary, if each input exists
     if(d3.select("#datetime").property("value")) {
-        inputDict['datetime'] = [d3.select("#datetime").property("value")];
+        inputDict['date-time'] = [d3.select("#datetime").property("value")];
     }
     if(d3.select("#cityfilter").property("value")) {
-        inputDict['city'] = [d3.select("#cityfilter").property("value")];
+        inputDict['Cities'] = [d3.select("#cityfilter").property("value")];
     }
     if(d3.select("#statefilter").property("value")) {
-        inputDict['state'] = [d3.select("#statefilter").property("value")];
+        inputDict['States'] = [d3.select("#statefilter").property("value")];
     }
     if(d3.select("#countryfilter").property("value")) {
-        inputDict['country'] = [d3.select("#countryfilter").property("value")];
+        inputDict['Country'] = [d3.select("#countryfilter").property("value")];
     }
     if(d3.select("#shapefilter").property("value")) {
-        inputDict['shape'] = [d3.select("#shapefilter").property("value")];
+        inputDict['Shape'] = [d3.select("#shapefilter").property("value")];
     }
 
     // View contents of inputDict
@@ -55,10 +44,6 @@ submit.on("click", function() {
         })
       }
 
-    // Filter data based on user input values
-    // First attempt commented below
-    // var filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
-    
     var filteredData = inputSearch(tableData, inputDict);
     console.log(filteredData);
 
